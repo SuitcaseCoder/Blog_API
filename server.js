@@ -1,12 +1,15 @@
 const express = require('express');
-const queryString = require('query-string');
+const morgan = require('morgan');
 
 const app = express();
 
-const blogPostRouter = require('./blog-posts');
+const blogPostRouter = require('./blogPostRouter');
 
-app.use(express.static('public'));
+app.use(morgan("common"));
+app.use(express.json());
 
-app.get('/', (req, res)=>{
-  res.sendFile(__dirname + '/views/index.html');
+app.use('/blog-posts', blogPostRouter);
+
+app.listen(process.env.PORT || 8080, ()=> {
+  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
