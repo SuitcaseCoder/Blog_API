@@ -35,3 +35,13 @@ router.post('/', (req, res) => {
   );
   res.status(201).json(item);
 });
+
+
+// DELETE
+router.delete('/:id', (req, res)=>{
+  blogPosts.delete(req.params.id);
+  console.log(`Deleted shopping list item \`${req.params.id}\``);
+  status(204).end();
+});
+
+// PUT
