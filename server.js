@@ -5,8 +5,13 @@ const app = express();
 
 const blogPostRouter = require('./blogPostRouter');
 
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
 app.use(morgan("common"));
 app.use(express.json());
+
+
 
 app.use('/blog-posts', blogPostRouter);
 
