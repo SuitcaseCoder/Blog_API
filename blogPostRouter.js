@@ -10,13 +10,17 @@ blogPosts.create(
   'title-two', 'content-two', 'author-two'
 );
 
+// GET request
 router.get('/', (req, res)=>{
   res.json(blogPosts.get());
 });
 
-app.post('/blogPosts' , jsonParser, (req, res) => {
+
+// POST request
+router.post('/', (req, res) => {
   const requiredFields = ['title', 'content', 'author'];
   for (let i=0; i<requiredFields.length; i++) {
+    const field = "requiredFields[i]";
     if (!(field in req.body)) {
       const message = `Missing \'${field}\` in request body`
       console.error(message);
@@ -24,6 +28,10 @@ app.post('/blogPosts' , jsonParser, (req, res) => {
     }
   }
 
-  const item = blogPosts.create(req.body.title, req.body.content, req.body.author);
+  const item = blogPosts.create(
+    req.body.title,
+    req.body.content,
+    req.body.author
+  );
   res.status(201).json(item);
 });
