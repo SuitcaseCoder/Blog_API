@@ -20,7 +20,7 @@ app.use(morgan("common"));
 app.use(express.json());
 // app.use(bodyParser.json());
 
-app.get('/authors', (req.res)=>{
+app.get('/authors', (req.res) => {
   Author
     .find()
     .then(authors.map(author => {
