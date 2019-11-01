@@ -14,7 +14,7 @@
     "chai-http": "^4.3.0",
     "faker": "^4.1.0",
     "mocha": "^6.1.4",
-    "mongoose": "^5.5.12"
+    "mongoose": "^5.7.5"
   },
   "scripts": {
     "test": "mocha",
